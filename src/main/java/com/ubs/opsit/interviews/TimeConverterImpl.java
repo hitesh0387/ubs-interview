@@ -57,6 +57,7 @@ public class TimeConverterImpl implements TimeConverter {
     private boolean isTimeValid(final String aTime) {
         try {
             final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+            simpleDateFormat.setLenient(false);
             simpleDateFormat.parse(aTime);
             return true;
         } catch (ParseException e) {

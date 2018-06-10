@@ -26,11 +26,23 @@ public class BerlinClockFixture {
 
     @When("the time is $time")
     public void whenTheTimeIs(String time) {
-        theTime = time;
+
+        if (time.equals("null")) {
+            this.theTime = null;
+        } else if (time.equals("empty")) {
+            this.theTime = "";
+        } else {
+            theTime = time;
+        }
     }
 
     @Then("the clock should look like $")
     public void thenTheClockShouldLookLike(String theExpectedBerlinClockOutput) {
         assertThat(berlinClock.convertTime(theTime)).isEqualTo(theExpectedBerlinClockOutput);
+    }
+
+    @Then("the clock should display nothing$")
+    public void thenTheClockShouldDisplayNoting() {
+        assertThat(berlinClock.convertTime(theTime).length()).isEqualTo(0);
     }
 }

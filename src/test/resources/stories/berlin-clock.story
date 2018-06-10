@@ -35,14 +35,16 @@ RRRO
 YYRYYRYYRYY
 YYYY
 
-Scenario: Midnight
-When the time is 24:00:00
-Then the clock should look like
-Y
-RRRR
-RRRR
-OOOOOOOOOOO
-OOOO
+Scenario: When invalid time format is passed
+When the time is 25:59:59
+Then the clock should display nothing
 
+Scenario: When no input is provided to converter
+When the time is null
+Then the clock should display nothing
+
+Scenario: When no input is provided to converter
+When the time is empty
+Then the clock should display nothing
 
 
